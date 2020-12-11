@@ -1,8 +1,14 @@
 from website_monitor import Producer
+from faker import Faker
 
-def test_basic():
+fake = Faker()
+
+def test_website_available():
     producer = Producer()
     result = producer.ping("https://google.com")
+    assert result.is_success()
 
-    assert hasattr(result, 'status')
-    assert result.status is 200
+def test_website_not_available():
+    producer = Producer()
+    result = producer.ping(fake.dga())
+    assert result.is_failed()

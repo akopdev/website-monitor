@@ -22,8 +22,14 @@ class Result():
         self.code = code
         self.get_response_duration()
 
+    def is_success(self):
+        return self.status is Status.SUCCESS
+
     def failed(self, code: int = 500) -> None:
         self.status = Status.FAILED
         self.code = code
         self.get_response_duration()
+
+    def is_failed(self):
+        return self.status is Status.FAILED
 
