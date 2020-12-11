@@ -1,4 +1,4 @@
-from website_monitor import Producer
+from website_monitor import Producer, Site
 from faker import Faker
 
 fake = Faker()
