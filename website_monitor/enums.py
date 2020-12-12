@@ -1,5 +1,5 @@
 from enum import Enum
 
-class Status(Enum):
-    SUCCESS = 'success'
-    FAILED = 'failed'
+class Status(str, Enum):
+    SUCCESS: str = 'success'
+    FAILED: str = 'failed'

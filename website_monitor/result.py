@@ -1,7 +1,7 @@
 import time
 from .enums import Status
 
-class Result():
+class Result(object):
 
     def __init__(self, url: str) -> None:
         self.url = url
