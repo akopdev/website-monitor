@@ -3,13 +3,16 @@ from .enums import Status
 
 class Result(object):
 
-    def __init__(self, url: str) -> None:
+    def __init__(self, url: str, code: int = None, status: Status = None, content: str = None, duration: float = None, end: time = None, start: time = None) -> None:
         self.url = url
-        self.status = None
-        self.content = None
-        self.duration = None
-        self.end = None
+        self.status = status
+        self.code = code
+        self.content = content
+        self.duration = duration
+        self.end = end
         self.start = time.time()
+        if start:
+           self.start = start 
 
     def get_response_duration(self) -> int:
         self.end = time.time()

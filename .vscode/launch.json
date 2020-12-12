@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Producer",
             "type": "python",
             "request": "launch",
-            "program": "main.py",
+            "program": "producer.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Consumer",
+            "type": "python",
+            "request": "launch",
+            "program": "consumer.py",
             "console": "integratedTerminal"
         }
     ]
