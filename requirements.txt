@@ -2,3 +2,4 @@ requests
 faker
 pytest
 kafka-python
+psycopg2-binary

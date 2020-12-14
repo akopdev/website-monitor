@@ -1,3 +1,4 @@
+from .settings import Settings
 from .result import Result
 from .site import Site
 import requests
@@ -8,10 +9,10 @@ import json
 from kafka import KafkaProducer
 
 class Producer():
-    def __init__(self, server: str = None, timeout: int = 30) -> None:
+    def __init__(self, settings: Settings, timeout: int = 30) -> None:
         self.timeout = timeout
-        if server:
-            self.message = KafkaProducer(bootstrap_servers=[server], value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        self.settings = settings
+        self.message = KafkaProducer(bootstrap_servers=[settings.broker_server], value_serializer=lambda v: json.dumps(v).encode('utf-8'))
     
     def get_result(self, url: str) -> Result:
         result = Result(url)
@@ -33,7 +34,7 @@ class Producer():
             if not re.search(pattern, result.content):
                 result.failed(404)
         if self.message:
-            self.message.send('topic', result.__dict__)
+            self.message.send(self.settings.broker_topic, result.__dict__)
         return result
 
     async def track(self, site: Site, pause: int = 5) -> None:

@@ -1,13 +1,17 @@
 import asyncio
-from website_monitor import Producer, Site
+from website_monitor import Producer, Site, Settings
 
 sites = [
     Site("https://google.com"),
     Site("https://yahoo.com")
 ]
 
+settings = Settings(
+    broker_server='localhost:9092',
+    broker_topic='demo_stream')
+
 if __name__ == '__main__':
-    producer = Producer(server='localhost:9092')
+    producer = Producer(settings)
     loop = asyncio.get_event_loop()
     batch = []
     for site in sites:

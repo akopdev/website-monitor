@@ -8,6 +8,14 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
     networks:
       - website-monitor
+  postgres:
+      image: postgres:9.4
+      environment: 
+          - POSTGRES_USER=demo
+          - POSTGRES_PASSWORD=demo
+          - POSTGRES_DB=demo
+      ports:
+          - 5432:5432
   kafka:
     image: 'bitnami/kafka:latest'
     ports:
