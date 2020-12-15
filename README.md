@@ -20,14 +20,15 @@ By default, all settings are comming to app throw system enviroment variables, h
 
 Currently we use this variables:
 
-| env              | code             | example    |
-| ---------------- | ---------------- | ---------- |
-| BROKER_SERVER    | broker_server    | kafka:9092 |
-| BROKER_TOPIC     | broker_topic     | demo       |
-| STORAGE_HOST     | storage_host     | posgres    |
-| STORAGE_USER     | storage_user     | demo       |
-| STORAGE_PASSWORD | storage_password | demo       |
-| STORAGE_DB       | storage_db       | demo       |
+| env              | code             | example                              |
+| ---------------- | ---------------- | ------------------------------------ |
+| SITES            | sites            | https://google.com;https://yahoo.com |
+| BROKER_SERVER    | broker_server    | kafka:9092                           |
+| BROKER_TOPIC     | broker_topic     | demo                                 |
+| STORAGE_HOST     | storage_host     | posgres                              |
+| STORAGE_USER     | storage_user     | demo                                 |
+| STORAGE_PASSWORD | storage_password | demo                                 |
+| STORAGE_DB       | storage_db       | demo                                 |
 
 ## Run
 

@@ -6,7 +6,7 @@ services:
       - '2181:2181'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
-      
+
   postgres:
       image: postgres:9.4
       environment: 
@@ -33,6 +33,7 @@ services:
     environment:
       - BROKER_SERVER=kafka:9092
       - BROKER_TOPIC=demo
+      - SITES=https://google.com;https://yahoo.com
   
   consumer:
     build: .

@@ -16,7 +16,8 @@
                 "STORAGE_HOST": "localhost",
                 "STORAGE_USER": "demo",
                 "STORAGE_PASSWORD": "demo",
-                "STORAGE_DB": "demo"
+                "STORAGE_DB": "demo",
+                "SITES": "https://google.com;https://yahoo.com"
             }
         },
         {
