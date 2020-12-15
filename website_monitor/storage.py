@@ -1,5 +1,6 @@
 from .settings import Settings
 from .result import Result
+from .log import log
 import psycopg2
 
 class Storage():
@@ -27,10 +28,10 @@ class Storage():
                     self.query.execute(query)
                     self.connection.commit()
                 except (Exception, psycopg2.DatabaseError) as error:
-                    print(error)
+                    log.error(error)
                     raise Exception(error)
         except (Exception) as error:
-            print(error)
+            log.error(error)
             raise Exception(error)
 
 
@@ -42,4 +43,4 @@ class Storage():
             self.query.execute(sql, tuple(result.__dict__.values()))
             self.connection.commit()
         except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
+            log.error(error)

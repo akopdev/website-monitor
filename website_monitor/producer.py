@@ -1,6 +1,7 @@
 from .settings import Settings
 from .result import Result
 from .site import Site
+from .log import log
 import requests
 import re
 import asyncio
@@ -12,7 +13,11 @@ class Producer():
     def __init__(self, settings: Settings, timeout: int = 30) -> None:
         self.timeout = timeout
         self.settings = settings
-        self.message = KafkaProducer(bootstrap_servers=[settings.broker_server], value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        try:
+            self.message = KafkaProducer(bootstrap_servers=[settings.broker_server], value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        except Exception as error:
+            log.error("Broker server error: {0}".format(error))
+            raise Exception(error)
     
     def get_result(self, url: str) -> Result:
         result = Result(url)
@@ -33,7 +38,9 @@ class Producer():
         if pattern and result.content:
             if not re.search(pattern, result.content):
                 result.failed(404)
+                log.warning("Failed to reg match {0} pattern for {1}".format(pattern, result.url))
         if self.message:
+            log.info("Producer is sending {0} data to consumer.".format(result.url))
             self.message.send(self.settings.broker_topic, result.__dict__)
         return result
 
