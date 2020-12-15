@@ -16,6 +16,19 @@ If you are going to use `docker`, simply skip this step, otherwise use `pip` to 
 $ pip install -r requirements.txt
 ```
 
+By default, all settings are comming to app throw system enviroment variables, however you can define them in code. You need to edit `consumer.py` and `producer.py` where you pass params to Settings class.
+
+Currently we use this variables:
+
+| env              | code             | example    |
+| ---------------- | ---------------- | ---------- |
+| BROKER_SERVER    | broker_server    | kafka:9092 |
+| BROKER_TOPIC     | broker_topic     | demo       |
+| STORAGE_HOST     | storage_host     | posgres    |
+| STORAGE_USER     | storage_user     | demo       |
+| STORAGE_PASSWORD | storage_password | demo       |
+| STORAGE_DB       | storage_db       | demo       |
+
 ## Run
 
 Recommended way is to run application using `docker-compose`.

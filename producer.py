@@ -6,9 +6,7 @@ sites = [
     Site("https://yahoo.com")
 ]
 
-settings = Settings(
-    broker_server='localhost:9092',
-    broker_topic='demo_stream')
+settings = Settings()
 
 if __name__ == '__main__':
     producer = Producer(settings)
